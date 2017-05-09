@@ -1,0 +1,16 @@
+GOPATH := ${PWD}/vendor:${GOPATH}
+export GOPATH
+
+default: build
+
+build:
+	env GOOS=linux GOARCH=amd64     go build -v -i -o bin/s5proxy          src/main.go
+	env GOOS=linux GOARCH=386       go build -v -i -o bin/s5p_386          src/main.go
+	env GOOS=linux GOARCH=arm       go build -v -i -o bin/s5p_arm          src/main.go
+	env GOOS=linux GOARCH=mips64    go build -v -i -o bin/s5p_mips64       src/main.go
+	env GOOS=linux GOARCH=mips64le  go build -v -i -o bin/s5p_mips64le     src/main.go
+	env GOOS=darwin GOARCH=386      go build -v -i -o bin/s5p_darwin386    src/main.go
+	env GOOS=darwin GOARCH=amd64    go build -v -i -o bin/s5p_darwin_amd64 src/main.go
+	env GOOS=windows GOARCH=386     go build -v -i -o bin/s5p_winx86       src/main.go
+	env GOOS=windows GOARCH=amd64   go build -v -i -o bin/s5p_win64        src/main.go
+
